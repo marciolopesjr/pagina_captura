@@ -155,7 +155,10 @@
         </div>
       </div>
 </section>
-
+<script type="text/javascript">
+ var checkout = false;
+</script>
+<iframe name="checkout_page" id="checkout_page" style="display:none;" onload="if(checkout){window.location='checkout.html';}"></iframe>
 <div id="overlay"></div>
 <div id="popup">
     <div class="popupcontent">
@@ -166,14 +169,14 @@
             <div class="text-2xl py-4 px-6 bg-red-600 text-white text-center font-bold uppercase">
                 FORMULÁRIO
             </div>
-            <form class="py-4 px-6" action="checkout.html" method="POST">
+            <form class="py-4 px-6" action="https://docs.google.com/forms/d/e/1FAIpQLSdK3RhSE18otvrYLw-zn6tcHinxOao7Q60gI9F7Y5Q_-4Yf9Q/formResponse" method="POST" target="checkout_page" onsubmit="checkout=true">
                 <div class="mb-4">
                     <label class="block text-gray-700 font-bold mb-2" for="name">
                         Nome
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="name" type="text" placeholder="Digite seu nome">
+                        id="name" name="entry.1241017140" type="text" placeholder="Digite seu nome">
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 font-bold mb-2" for="email">
@@ -181,7 +184,7 @@
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="email" type="email" placeholder="Digite seu melhor email">
+                        id="email" name="entry.705127067" type="email" placeholder="Digite seu melhor email">
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 font-bold mb-2" for="phone">
@@ -189,7 +192,7 @@
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="phone" type="tel" placeholder="Digite seu número">
+                        id="phone" name="entry.271523113" type="tel" placeholder="Digite seu número">
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 font-bold mb-2" for="message">
@@ -197,11 +200,11 @@
                     </label>
                     <textarea
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="message" rows="4" placeholder="...."></textarea>
+                        id="message" name="entry.661291011" rows="4" placeholder="...."></textarea>
                 </div>
                 <div class="flex items-center justify-center mb-4">
                     <button
-                        class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 focus:outline-none focus:shadow-outline"
+                        class="bg-red-600 text-white font-extrabold py-2 px-4 rounded hover:bg-red-700 focus:outline-none focus:shadow-outline"
                         type="submit">
                         FAZER MEU CADASTRO
                     </button>
