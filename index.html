@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alcance seu delivery milionário - Escola do Delivery </title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -15,27 +17,65 @@
         .botao-brilho-vermelho:hover {
         box-shadow: 0 0 20px rgba(255, 0, 0, 1);
         }
+
+        #overlay {
+		display: none;
+		position: fixed;
+        backdrop-filter: blur(10px);
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0.8;
+		z-index: 100;
+	}
+
+	#popup {
+		display: none;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		width: 500px;
+		height: 500px;
+		margin-left: -250px; 
+		margin-top: -250px;
+		z-index: 200;
+	}
+
+	#popupclose {
+		float: right;
+		padding: 10px;
+		cursor: pointer;
+	}
+
+	.popupcontent {
+		padding: 10px;
+	}
+
+	#button {
+		cursor: pointer;
+	}
     </style>
 </head>
 <body class="bg-black">
 
 <!-- FIRST SECTION -->
-<section id="start" class="z-0 bg-no-repeat bg-cover lg:bg-[url('assets/fundo_section_1.webp')] bg-opacity-0 back-overflow">
+<section id="start" class="z-0 bg-no-repeat bg-cover lg:bg-[url('assets/fundo_section_1.png')] bg-opacity-0 back-overflow">
     <div class="pb-56">
       <div class="mx-auto max-w-7xl pt-16 sm:pt-24 lg:min-h-[35rem]">
           <div class="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-12 lg:gap-8">
               <div class="px-6 sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:flex lg:items-center lg:text-left">
                 <div class="space-y-8">
                       <div class="space-y-4">
-                        <div class="">
+                        <div class="" data-aos="fade-right">
                             <span class="text-red-600 text-6xl font-extrabold">IMERSÃO<BR></span>
-                            <span class="text-white text-2xl font-normal">ALCANCE O SEU DELIVERY<BR></span>
-                            <span class="text-white text-5xl font-normal">MILIONÁRIO</span>
+                            <span class="text-white text-2xl lg:text-[21px] font-normal">ALCANCE O SEU DELIVERY<BR></span>
+                            <span class="text-white text-5xl lg:text-[46px] font-normal">MILIONÁRIO</span>
                           </div>
-                          <img class="h-12" src="assets/evento_gratuito.png">
-                          <div class="space-y-2">
+                          <img class="h-12" data-aos="fade-right" src="assets/evento_gratuito.png">
+                          <div class="space-y-2" data-aos="fade-right">
                               <h1 class="text-5xl font-bold tracking-tight text-white sm:text-2xl md:text-2xl">
-                                  <span class="text-left lg:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
+                                  <span class="text-left lg:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-red-500">
                                     VENHA APRENDER COMO <br> EU SAÍ DE 30 PEDIDOS <br> POR DIA A 20 MIL POR MÊS!<br>
                                   </span>
                               </h1>
@@ -43,7 +83,7 @@
   
   
                       </div>
-                      <div class="mt-4 md:mt-8">
+                      <div class="mt-4 md:mt-8" data-aos="fade-right">
                         <span class="pt-16 text-white text-xl text-balance">
                             Um evento ao vivo e gratuito para donos de delivery e pessoas que buscam evoluir e aprender a construir um delivery de sucesso e sair da operação escalando o seu negócio!
                           </span>
@@ -52,7 +92,7 @@
                   </div>
               </div>
 
-              <div class="flex items-center w-full col-span-6">
+              <div class="flex items-center w-full col-span-6" data-aos="fade-up">
                   <div class="px-6 lg:h-100% lg:hidden w-full max-w-2xl col-span-6 flex items-center mx-auto">
                     <img class="" src="assets/talison_section_1.png">
                   </div>
@@ -62,8 +102,8 @@
   </div>
   </section>
 
-  <section id="" class="z-0 bg-no-repeat bg-cover lg:bg-[url('assets/fundo_section_2.png')] bg-opacity-0 back-overflow">
-  <section class="mt-28 p-10 mx-auto max-w-7xl rounded-xl border-4 border-gray-700 text-white">
+  <section id="" class="z-0 bg-no-repeat bg-cover lg:bg-[url('assets/fundo_section_2.webp')] bg-opacity-0 back-overflow">
+  <section class="mt-28 p-10 mx-auto max-w-7xl rounded-xl border-4 border-gray-700 text-white" data-aos="fade-up">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="rounded-lg flex items-center justify-center text-6xl font-bold">
             <img class="" src="assets/TALISON.png">
@@ -76,19 +116,19 @@
             <h2 class="text-2xl font-bold mb-4">O EVENTO COMEÇA EM:</h2>
             <div class="flex justify-center lg:justify-start space-x-4">
                 <div class="countdown-box bg-red-600 rounded-lg p-4 w-24 flex flex-col items-center justify-center">
-                    <span class="text-2xl font-bold">00</span>
+                    <span id="days" class="text-2xl font-bold">00</span>
                     <span class="text-sm">DIAS</span>
                 </div>
                 <div class="countdown-box bg-red-600 rounded-lg p-4 w-24 flex flex-col items-center justify-center">
-                    <span class="text-2xl font-bold">00</span>
+                    <span id="hours" class="text-2xl font-bold">00</span>
                     <span class="text-sm">HORAS</span>
                 </div>
                 <div class="countdown-box bg-red-600 rounded-lg p-4 w-24 flex flex-col items-center justify-center">
-                    <span class="text-2xl font-bold">00</span>
+                    <span id="minutes" class="text-2xl font-bold">00</span>
                     <span class="text-sm">MINUTOS</span>
                 </div>
                 <div class="countdown-box bg-red-600 rounded-lg p-4 w-18 flex flex-col items-center justify-center">
-                    <span class="text-2xl font-bold">00</span>
+                    <span id="seconds" class="text-2xl font-bold">00</span>
                     <span class="text-sm">SEGUNDOS</span>
                 </div>
             </div>
@@ -97,67 +137,131 @@
 </section>
 </section>
 
-<section class="z-0 bg-no-repeat bg-cover lg:bg-[url('assets/fundo_section_3.png')] bg-opacity-0 back-overflow">
+<section class="z-0 bg-no-repeat bg-cover lg:bg-[url('assets/fundo_section_3.webp')] bg-opacity-0 back-overflow">
     <div class="h-screen flex items-center justify-center">
-        <div class="text-center text-white px-4">
+        <div class="text-center text-white px-4" data-aos="fade-down-right">
           <h1 class="text-3xl lg:text-4xl font-bold mb-4">Preparado para aprender o <span class="text-red-600">passo a passo</span><br>de como chegar a um <span class="text-red-600">delivery milionário</span>?</h1>
           <p class="mb-8">Faça seu cadastro e participe desse evento online<br>e ao vivo, para todos que desejam aprender a como alavancar seu delivery!</p>
-          <button class="btn-red-glow bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out botao-brilho-vermelho">
+          <button id="btn_cadastro" class="btn-red-glow bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out animate-bounce botao-brilho-vermelho">
             FAZER MEU CADASTRO
           </button>
         </div>
       </div>
 </section>
 
-<section>
-    <div class="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden mb-8">
-        <div class="text-2xl py-4 px-6 bg-red-600 text-white text-center font-bold uppercase">
-            FORMULÁRIO
+<div id="overlay"></div>
+<div id="popup">
+    <div class="popupcontent">
+        <div class="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+            <div class="popupcontrols">
+                <span id="popupclose" class="text-white pr-8">✖</span>
+            </div>
+            <div class="text-2xl py-4 px-6 bg-red-600 text-white text-center font-bold uppercase">
+                FORMULÁRIO
+            </div>
+            <form class="py-4 px-6" action="checkout.html" method="POST">
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="name">
+                        Nome
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="name" type="text" placeholder="Digite seu nome">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="email">
+                        Email
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="email" type="email" placeholder="Digite seu melhor email">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="phone">
+                        Número
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="phone" type="tel" placeholder="Digite seu número">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="message">
+                        Observação
+                    </label>
+                    <textarea
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="message" rows="4" placeholder="...."></textarea>
+                </div>
+                <div class="flex items-center justify-center mb-4">
+                    <button
+                        class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 focus:outline-none focus:shadow-outline"
+                        type="submit">
+                        FAZER MEU CADASTRO
+                    </button>
+                </div>
+        
+            </form>
         </div>
-        <form class="py-4 px-6" action="" method="POST">
-            <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="name">
-                    Nome
-                </label>
-                <input
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="name" type="text" placeholder="Digite seu nome">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="email">
-                    Email
-                </label>
-                <input
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="email" type="email" placeholder="Digite seu melhor email">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="phone">
-                    Número
-                </label>
-                <input
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="phone" type="tel" placeholder="Digite seu número">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="message">
-                    Observação
-                </label>
-                <textarea
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="message" rows="4" placeholder="...."></textarea>
-            </div>
-            <div class="flex items-center justify-center mb-4">
-                <button
-                    class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 focus:outline-none focus:shadow-outline"
-                    type="submit">
-                    FAZER MEU CADASTRO
-                </button>
-            </div>
-    
-        </form>
     </div>
-</section>
+</div>
+
+    <script type="text/javascript">
+        AOS.init();
+
+        function desativarDragDrop () {
+        document.addEventListener('dragstart', (evento) => evento.preventDefault(), false)
+        document.addEventListener('drop', (evento) => evento.preventDefault(), false)
+        }
+        desativarDragDrop();
+
+        // Seta a data final.
+        var countDownDate = new Date("April 5, 2024 15:37:25").getTime();
+
+        // Atualiza o contador a cada segundo.
+        var x = setInterval(function() {
+
+        // Busca a data atual
+        var now = new Date().getTime();
+            
+        // Encontra a diferença entre a data atual e final.
+        var distance = countDownDate - now;
+        
+        // Equações e variáveis para obter os dias, horas, minutos e segundos.
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+        // Imprime os valores em seus elementos respectivos.
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
+            
+        // If the count down is over, write some text 
+        // Se a contagem terminar, envia um console.log dizendo "CONTAGEM FINALIZADA".
+        if (distance < 0) {
+            clearInterval(x);
+            console.log("CONTAGEM FINALIZADA");
+        }
+        }, 1000);
+
+        // Inicializando variáveis 
+        var closePopup = document.getElementById("popupclose");
+        var overlay = document.getElementById("overlay");
+        var popup = document.getElementById("popup");
+        var button = document.getElementById("btn_cadastro");
+        // Suporte para fechar caso necessário
+        closePopup.onclick = function() {
+          overlay.style.display = 'none';
+          popup.style.display = 'none';
+        };
+        // Código para exibição
+        button.onclick = function() {
+          overlay.style.display = 'block';
+          popup.style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
